@@ -13,9 +13,14 @@ class CoffreDeGuildeController extends Controller
     {
         $cdg_all = DB::table('cdg_objets')
             ->select('*')
+            ->orderBy('classe')
+            ->orderBy('genre')
+            ->orderByRaw("FIELD(libelle, 'Casque', 'Torse', 'Gants', 'Bottes')")
             ->get();
+
         return view('cdg', compact('cdg_all'));
     }
+
 
     public function storeData(Request $request)
     {
@@ -31,6 +36,25 @@ class CoffreDeGuildeController extends Controller
     {
         $request = cdg_objets::find($id);
         $request->delete();
+
+        return redirect('cdg')->with('status', 'Archive supprimée.');
+    }
+
+    public function addOne($id)
+    {
+        $request = cdg_objets::find($id);
+        $request->quantite += 1;
+        $request->save();
+
+        return redirect('cdg')->with('status', 'Archive supprimée.');
+    }
+
+    public function removeOne($id)
+    {
+        $request = cdg_objets::find($id);
+        $request->quantite -= 1;
+        $request->save();
+
         return redirect('cdg')->with('status', 'Archive supprimée.');
     }
 }

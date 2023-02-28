@@ -21,5 +21,7 @@ Route::get('/', function () {
 Route::get('cdg', [CoffreDeGuildeController::class, 'getData'])->name('cdg');
 Route::post('cdgAdd', [CoffreDeGuildeController::class, 'storeData'])->name('cdgAdd');
 Route::put('cdgRemove/{id}', [CoffreDeGuildeController::class, 'removeData'])->name('cdgRemove');
+Route::put('cdgAddOne/{id}', [CoffreDeGuildeController::class, 'addOne'])->name('cdgAddOne');
+Route::put('cdgRemoveOne/{id}', [CoffreDeGuildeController::class, 'removeOne'])->name('cdgRemoveOne');
 
 
