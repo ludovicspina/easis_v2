@@ -16,6 +16,7 @@
                             <div>{{ $cdg->libelle }}</div>
                             <div>{{ $cdg->quantite }}</div>
                             <div class="flex justify-center gap-4">
+                                @if (Auth::check() && Auth::user()->role == 100)
                                 <form autocomplete="off"
                                       action="{{ route('cdgAddOne', $cdg->id) }}"
                                       method="POST">
@@ -34,6 +35,7 @@
                                         ---
                                     </button>
                                 </form>
+                                @endif
                             </div>
 
                         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CoffreDeGuildeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,7 @@ Route::get('/', function () {
     return view('base');
 });
 
+
 Route::get('cdg', [CoffreDeGuildeController::class, 'getData'])->name('cdg');
 Route::post('cdgAdd', [CoffreDeGuildeController::class, 'storeData'])->name('cdgAdd');
 Route::put('cdgRemove/{id}', [CoffreDeGuildeController::class, 'removeData'])->name('cdgRemove');
@@ -25,3 +27,17 @@ Route::put('cdgAddOne/{id}', [CoffreDeGuildeController::class, 'addOne'])->name(
 Route::put('cdgRemoveOne/{id}', [CoffreDeGuildeController::class, 'removeOne'])->name('cdgRemoveOne');
 
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
