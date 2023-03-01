@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <p style="font-size: 200%">Easis</p>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -56,5 +56,9 @@
                 </x-button>
             </div>
         </form>
+
+        <x-button class="ml-4">
+            <a href="{{route('home')}}">Retour</a>
+        </x-button>
     </x-authentication-card>
 </x-guest-layout>

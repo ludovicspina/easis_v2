@@ -14,15 +14,19 @@
 </head>
 <body class="antialiased bg-neutral-900 text-neutral-300">
 <h1 class="text-3xl text-center border-b-2 border-neutral-500 bg-neutral-800">Easis</h1>
-<ul class="flex justify-center gap-4">
+<ul class="flex justify-center flex-col items-center sm:flex-row gap-1 sm:gap-4">
     <li><a href="{{ route('cdg') }}" class="underline hover:text-blue-300">Objets cdg</a></li>
+    @if (!Auth::check())
     <li><a href="{{ route('login') }}" class="underline hover:text-blue-300">Connexion</a></li>
     <li><a href="{{ route('register') }}" class="underline hover:text-blue-300">Inscription</a></li>
+    @endif
+    @if (Auth::check())
     <li><a href="{{ route('profile.show') }}" class="underline hover:text-blue-300">Profil utilisateur</a></li>
     <li><form method="POST" action="{{ route('logout') }}">
             @csrf
             <button class="underline hover:text-blue-300" type="submit">Déconnexion</button>
         </form></li>
+    @endif
 </ul>
 @section('content')
 @show

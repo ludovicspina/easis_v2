@@ -15,16 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('base');
-});
+Route::view('/', 'base')->name('home');
 
 
 Route::get('cdg', [CoffreDeGuildeController::class, 'getData'])->name('cdg');
-Route::post('cdgAdd', [CoffreDeGuildeController::class, 'storeData'])->name('cdgAdd');
-Route::put('cdgRemove/{id}', [CoffreDeGuildeController::class, 'removeData'])->name('cdgRemove');
-Route::put('cdgAddOne/{id}', [CoffreDeGuildeController::class, 'addOne'])->name('cdgAddOne');
-Route::put('cdgRemoveOne/{id}', [CoffreDeGuildeController::class, 'removeOne'])->name('cdgRemoveOne');
+Route::post('cdgAdd', [CoffreDeGuildeController::class, 'storeItemData'])->name('cdgAdd');
+Route::post('storeLogData', [CoffreDeGuildeController::class, 'storeLogData'])->name('storeLogData');
+Route::put('cdgAddOne/{id}', [CoffreDeGuildeController::class, 'addOneItem'])->name('cdgAddOne');
+Route::put('cdgRemoveOne/{id}', [CoffreDeGuildeController::class, 'removeOneItem'])->name('cdgRemoveOne');
 
 
 Route::middleware([
