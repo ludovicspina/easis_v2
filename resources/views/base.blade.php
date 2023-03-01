@@ -13,7 +13,7 @@
 
 </head>
 <body class="antialiased bg-neutral-900 text-neutral-300">
-<h1 class="text-3xl text-center border-b-2 border-neutral-500 bg-neutral-800">Easis</h1>
+<h1 class="text-3xl text-center border-b-2 border-neutral-500 bg-neutral-800"><a href="{{ route('home') }}">Easis</a></h1>
 <ul class="flex justify-center flex-col items-center sm:flex-row gap-1 sm:gap-4">
     <li><a href="{{ route('cdg') }}" class="underline hover:text-blue-300">Objets cdg</a></li>
     @if (!Auth::check())
