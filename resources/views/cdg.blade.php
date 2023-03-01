@@ -11,36 +11,38 @@
                     {{ $chunk->first()->genre }}
                 </div>
                 @foreach($chunk as $cdg)
-                    <div class="flex gap-4">
-                        <div class="grid grid-cols-5">
-                            <div>{{ $cdg->libelle }}</div>
-                            <div>{{ $cdg->quantite }}</div>
+                    @if($cdg->quantite !== 0)
+                        <div class="grid grid-cols-3 bg-neutral-800">
+                            @else
+                                <div class="grid grid-cols-3">
+                            @endif
+                            <div class="flex justify-center">{{ $cdg->libelle }}</div>
+                            <div class="bg-neutral-700 flex justify-center rounded-full w-6">{{ $cdg->quantite }}</div>
                             <div class="flex justify-center gap-4">
                                 @if (Auth::check() && Auth::user()->role == 100)
-                                <form autocomplete="off"
-                                      action="{{ route('cdgAddOne', $cdg->id) }}"
-                                      method="POST">
-                                    @csrf
-                                    @method('put')
-                                    <button type="submit">
-                                        +++
-                                    </button>
-                                </form>
-                                <form autocomplete="off"
-                                      action="{{ route('cdgRemoveOne', $cdg->id) }}"
-                                      method="POST">
-                                    @csrf
-                                    @method('put')
-                                    <button type="submit">
-                                        ---
-                                    </button>
-                                </form>
+                                    <form autocomplete="off"
+                                          action="{{ route('cdgAddOne', $cdg->id) }}"
+                                          method="POST">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit">
+                                            +++
+                                        </button>
+                                    </form>
+                                    <form autocomplete="off"
+                                          action="{{ route('cdgRemoveOne', $cdg->id) }}"
+                                          method="POST">
+                                        @csrf
+                                        @method('put')
+                                        <button type="submit">
+                                            ---
+                                        </button>
+                                    </form>
                                 @endif
                             </div>
-
                         </div>
-                    </div>
-                @endforeach
+
+                        @endforeach
             </div>
         @endforeach
     </div>
