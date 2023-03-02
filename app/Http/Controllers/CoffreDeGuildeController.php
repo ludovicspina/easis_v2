@@ -13,8 +13,17 @@ class CoffreDeGuildeController extends Controller
 {
     public function getData()
     {
-        $cdg_all = DB::table('cdg_objets')
+        $cdg_apo = DB::table('cdg_objets')
             ->select('*')
+            ->where('type_stuff', '=', 'APOCALYPSE')
+            ->orderByRaw("FIELD(classe, 'Chevalier', 'Assassin', 'Prêtre', 'Moine', 'Ranger', 'Jester', 'Sorcier', 'Elementaliste')")
+            ->orderBy('genre')
+            ->orderByRaw("FIELD(libelle, 'Casque', 'Torse', 'Gants', 'Bottes')")
+            ->get();
+
+        $cdg_135 = DB::table('cdg_objets')
+            ->select('*')
+            ->where('type_stuff', '=', 'APOCALYPSE')
             ->orderByRaw("FIELD(classe, 'Chevalier', 'Assassin', 'Prêtre', 'Moine', 'Ranger', 'Jester', 'Sorcier', 'Elementaliste')")
             ->orderBy('genre')
             ->orderByRaw("FIELD(libelle, 'Casque', 'Torse', 'Gants', 'Bottes')")
@@ -24,7 +33,7 @@ class CoffreDeGuildeController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('cdg', compact('cdg_all', 'cdg_logs'));
+        return view('cdg', compact('cdg_apo','cdg_135', 'cdg_logs'));
     }
 
 
