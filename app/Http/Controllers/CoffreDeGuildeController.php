@@ -23,7 +23,7 @@ class CoffreDeGuildeController extends Controller
 
         $cdg_135 = DB::table('cdg_objets')
             ->select('*')
-            ->where('type_stuff', '=', 'APOCALYPSE')
+            ->where('type_stuff', '=', '135')
             ->orderByRaw("FIELD(classe, 'Chevalier', 'Assassin', 'Prêtre', 'Moine', 'Ranger', 'Jester', 'Sorcier', 'Elementaliste')")
             ->orderBy('genre')
             ->orderByRaw("FIELD(libelle, 'Casque', 'Torse', 'Gants', 'Bottes')")
