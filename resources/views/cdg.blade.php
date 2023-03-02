@@ -1,7 +1,7 @@
 @extends('base')
 @section('content')
     <p class="text-2xl text-red-600 font-bold flex justify-center">STUFF APOCALYPSE</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-red-700 gap-2 p-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-red-700 bg-red-700 bg-opacity-25 gap-2 p-2">
 
 
 
@@ -69,7 +69,7 @@
     </div>
 
     <p class="text-2xl text-sky-600 font-bold flex justify-center">STUFF 135</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-sky-700 gap-2 p-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-sky-700 bg-sky-700 bg-opacity-25 gap-2 p-2">
 
 
 
